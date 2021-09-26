@@ -54,7 +54,7 @@ const handleEmptyCart = async () => {
       
  <Products products={products} onAddToCart={handleAddToCart}  />
     </Route>
-    <Route exact path="/cart">
+    <Route  path="/cart">
  <Cart cart={cart} handleEmptyCart={handleEmptyCart} handleRemoveFromCart={handleRemoveFromCart} handleUpdateCartQty={handleUpdateCartQty} />
 
     </Route>
