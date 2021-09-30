@@ -5,11 +5,13 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import Review from './Review';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe('pk_test_51JfK29HupLtmNERhV3ID6W1cEFQwrKpqDY8GY8oXuFU8Cbj5EGX42eXv8ft0Kewf4P30PtvNDot9DvdxyxEF9Awl0032RDPjWD');
 
 
 const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptureCheckout }) => {
   const handleSubmit = async (event, elements, stripe) => {
+
     event.preventDefault();
 
     if (!stripe || !elements) return;

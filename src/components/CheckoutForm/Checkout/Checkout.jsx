@@ -4,7 +4,7 @@ import PaymentForm from '../PaymentForm'
 import AddressForm from '../AddressForm'
 import useStyles from './styles'
 import {commerce} from '../../../lib/commerce'
-const Checkout = ({cart}) => {
+const Checkout = ({cart,order,onCaptureCheckout, error}) => {
 
     const classes = useStyles();
 const [activeStep, setSActiveStep] = useState(0);
@@ -43,7 +43,7 @@ const [shippingData, setShippingData] = useState({});
         </div>
     )
 
-    const Form = () => activeStep === 0 ? <AddressForm  checkoutToken={checkoutToken} next={next} /> : <PaymentForm  checkoutToken={checkoutToken} backStep={backStep}/>
+    const Form = () => activeStep === 0 ? <AddressForm  checkoutToken={checkoutToken} next={next} /> : <PaymentForm  checkoutToken={checkoutToken} backStep={backStep} onCaptureCheckout={onCaptureCheckout} nextStep={nextStep}/>
     return (
         <>
         <div className={classes.toolbar} />
