@@ -3,11 +3,13 @@ import {Products, Navbar} from './components'
 import Cart from './components/Cart/Cart';
 import {commerce} from './lib/commerce'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Checkout from './components/CheckoutForm/Checkout/Checkout';
+import Home from './pages/LandingPage/Home'
 
 const App = () => {
   const [products,setProducts] = useState([]);
   const [cart, setCart] = useState({});
-  const [cartView, setCartView] = useState({});
+  
   const fetchProducts = async () => {
 const {data} = await commerce.products.list();
 setProducts(data);
@@ -50,6 +52,10 @@ const handleEmptyCart = async () => {
       <div>
 <Navbar totalItems={cart.total_items} />
     <Switch>
+    <Route exact path="/home">
+      
+ <Home  />
+    </Route>
     <Route exact path="/">
       
  <Products products={products} onAddToCart={handleAddToCart}  />
@@ -58,7 +64,9 @@ const handleEmptyCart = async () => {
  <Cart cart={cart} handleEmptyCart={handleEmptyCart} handleRemoveFromCart={handleRemoveFromCart} handleUpdateCartQty={handleUpdateCartQty} />
 
     </Route>
-
+    <Route exact path='/checkout'>
+    <Checkout cart={cart} />
+    </Route>
 
       </Switch>
 
