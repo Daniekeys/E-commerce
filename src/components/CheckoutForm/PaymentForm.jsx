@@ -13,6 +13,7 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
   const handleSubmit = async (event, elements, stripe) => {
 
     event.preventDefault();
+    
 
     if (!stripe || !elements) return;
 
@@ -25,7 +26,7 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
     } else {
       const orderData = {
         line_items: checkoutToken.live.line_items,
-        customer: { firstname: shippingData.firstName, lastname: shippingData.lastName, email: shippingData.email },
+        customer: { firstname: shippingData.firstname, lastname: shippingData.lastname, email: shippingData.email },
         shipping: { name: 'International', street: shippingData.address1, town_city: shippingData.city, county_state: shippingData.shippingSubdivision, postal_zip_code: shippingData.zip, country: shippingData.shippingCountry },
         fulfillment: { shipping_method: shippingData.shippingOption },
         payment: {

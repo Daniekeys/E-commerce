@@ -85,7 +85,7 @@ const handleEmptyCart = async () => {
     <Route exact path='/checkout'>
     <Checkout cart={cart} 
     order={order}
-    onCapturedCheckout={handleCaptureCheckout}
+    onCaptureCheckout={handleCaptureCheckout}
     error={errorMessage}
 
     
